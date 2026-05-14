@@ -90,18 +90,18 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden selection:bg-primary/20 selection:text-primary">
       {/* Top bar */}
-      <div className="bg-primary text-primary-foreground text-xs sm:text-sm font-medium">
-        <div className="container flex items-center justify-between py-2.5 gap-3">
-          <div className="flex items-center gap-2 truncate opacity-90 hover:opacity-100 transition-opacity">
-            <MapPin className="w-4 h-4 text-secondary shrink-0" />
-            <span className="truncate">{ADDRESS_STREET} — Campo Grande/MS</span>
+      <div className="bg-primary text-primary-foreground text-[10px] sm:text-sm font-medium">
+        <div className="container flex flex-wrap items-center justify-center sm:justify-between py-2 sm:py-2.5 gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
+            <MapPin className="w-3.5 h-3.5 text-secondary shrink-0" />
+            <span className="truncate max-w-[200px] sm:max-w-none">{ADDRESS_STREET} — CG/MS</span>
           </div>
-          <div className="hidden sm:flex items-center gap-4 shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 opacity-90 hover:text-secondary hover:opacity-100 transition-colors">
-              <Instagram className="w-3.5 h-3.5" /> @{INSTAGRAM_HANDLE}
+              <Instagram className="w-3.5 h-3.5" /> <span className="hidden xs:inline">@{INSTAGRAM_HANDLE}</span>
             </a>
             <a href={`tel:+${WHATSAPP_NUMBER}`} className="flex items-center gap-1 opacity-90 hover:text-secondary hover:opacity-100 transition-colors font-semibold">
-              <Phone className="w-3.5 h-3.5" /> Fixo: {PHONE_FIXED}
+              <Phone className="w-3.5 h-3.5" /> <span className="hidden xs:inline">Fixo:</span> {PHONE_FIXED}
             </a>
           </div>
         </div>
@@ -130,11 +130,11 @@ const Index = () => {
 
           <div className="flex items-center gap-3">
             <Button asChild className="hidden sm:inline-flex h-11 px-6 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
-              <a href={waLink(WA_MSGS.menu)} target="_blank" rel="noopener noreferrer">
+              <a href={waLink(WA_MSGS.menu)} target="_blank" rel="noopener noreferrer" aria-label="Agendar horário pelo WhatsApp">
                 Agendar Horário
               </a>
             </Button>
-            <Button variant="ghost" size="icon" className="lg:hidden rounded-full hover:bg-secondary/20" onClick={() => setMenuOpen(true)} aria-label="Abrir menu">
+            <Button variant="ghost" size="icon" className="lg:hidden rounded-full hover:bg-secondary/20" onClick={() => setMenuOpen(true)} aria-label="Abrir menu de navegação">
               <Menu className="w-6 h-6 text-primary" />
             </Button>
           </div>
@@ -214,28 +214,36 @@ const Index = () => {
           </div>
 
           <div className="relative lg:ml-auto animate-fade-in-up stagger-2">
-            <div className="absolute -inset-10 bg-primary/10 rounded-full blur-3xl opacity-50 animate-float-slow" />
+            <div className="absolute -inset-4 sm:-inset-10 bg-primary/10 rounded-full blur-3xl opacity-50 animate-float-slow" />
             <div className="relative aspect-[4/5] max-w-md mx-auto rounded-[2.5rem] overflow-hidden shadow-pop border-8 border-background">
-              <img src={heroPets} alt="Cachorro feliz" className="w-full h-full object-cover" width={800} height={1000} />
+              <img 
+                src={heroPets} 
+                alt="Cachorro feliz e saudável representando o cuidado do Pet Shop Tamandaré" 
+                className="w-full h-full object-cover" 
+                width={800} 
+                height={1000} 
+                fetchpriority="high"
+                loading="eager"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-60"></div>
             </div>
             
             {/* Floating Badges */}
-            <div className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 bg-background rounded-2xl p-4 shadow-card flex items-center gap-4 animate-float-slow" style={{ animationDelay: '1s' }}>
-              <div className="w-12 h-12 rounded-xl bg-secondary/20 grid place-items-center">
-                <MapPin className="w-6 h-6 text-primary" />
+            <div className="absolute -bottom-4 -left-2 sm:-bottom-8 sm:-left-8 bg-background rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-card flex items-center gap-3 sm:gap-4 animate-float-slow z-20" style={{ animationDelay: '1s' }}>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-secondary/20 grid place-items-center shrink-0">
+                <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
               <div>
-                <div className="font-bold text-sm">Visite-nos</div>
-                <div className="text-xs text-muted-foreground font-medium">Vila Sobrinho</div>
+                <div className="font-bold text-xs sm:text-sm">Visite-nos</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground font-medium">Vila Sobrinho</div>
               </div>
             </div>
             
-            <div className="absolute top-10 -right-4 sm:top-12 sm:-right-8 bg-secondary text-secondary-foreground rounded-2xl p-4 shadow-yellow animate-wag" style={{ animationDelay: '2s' }}>
-              <div className="flex items-center gap-2 mb-1">
-                {[1,2,3,4,5].map(star => <Star key={star} className="w-3.5 h-3.5 fill-primary text-primary" />)}
+            <div className="absolute top-8 -right-2 sm:top-12 sm:-right-8 bg-secondary text-secondary-foreground rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-yellow animate-wag z-20" style={{ animationDelay: '2s' }}>
+              <div className="flex items-center gap-1.5 mb-1">
+                {[1,2,3,4,5].map(star => <Star key={star} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-primary text-primary" />)}
               </div>
-              <div className="font-bold text-sm">Clientes Satisfeitos</div>
+              <div className="font-bold text-xs sm:text-sm">Clientes Satisfeitos</div>
             </div>
           </div>
         </div>
@@ -309,29 +317,29 @@ const Index = () => {
       </section>
 
       {/* Sobre a Clínica */}
-      <section id="clinica" className="py-20 sm:py-28 bg-background overflow-hidden">
+      <section id="clinica" className="py-12 sm:py-24 bg-background overflow-hidden">
         <div className="container relative">
-          <div className="relative rounded-[3rem] bg-primary p-8 sm:p-12 md:p-16 lg:p-20 overflow-hidden shadow-pop">
+          <div className="relative rounded-[2rem] sm:rounded-[3rem] bg-primary p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden shadow-pop">
             <div className="absolute top-0 right-0 w-full h-full opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
             <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary rounded-full blur-3xl opacity-20" />
             
-            <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div className="text-primary-foreground order-2 lg:order-1">
-                <Badge className="bg-secondary text-secondary-foreground hover:bg-secondary mb-6 rounded-full font-bold px-4 py-1.5 uppercase tracking-wider text-xs border-none">
+            <div className="relative grid lg:grid-cols-2 gap-10 sm:gap-20 items-center">
+              <div className="text-primary-foreground order-2 lg:order-1 text-center lg:text-left">
+                <Badge className="bg-secondary text-secondary-foreground hover:bg-secondary mb-6 rounded-full font-bold px-4 py-1.5 uppercase tracking-wider text-[10px] sm:text-xs border-none">
                   Nossa Missão
                 </Badge>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-black leading-[1.1] mb-6">
+                <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-black leading-tight mb-6">
                   Cuidamos com o <span className="text-secondary">mesmo amor</span> que você.
                 </h2>
-                <p className="text-primary-foreground/90 text-lg leading-relaxed mb-8 font-medium">
+                <p className="text-primary-foreground/90 text-base sm:text-lg leading-relaxed mb-8 font-medium">
                   Trabalhamos diariamente para promover a qualidade de vida do seu animal, unindo um atendimento ético, acolhedor e focado na felicidade da sua família.
                 </p>
-                <div className="flex flex-wrap gap-3 mb-10">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 mb-10">
                   {["Amor", "Higiene", "Confiança", "Saúde"].map(t => (
-                    <span key={t} className="px-4 py-2 rounded-full bg-white/10 text-sm font-semibold backdrop-blur-md border border-white/10">{t}</span>
+                    <span key={t} className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/10 text-xs sm:text-sm font-semibold backdrop-blur-md border border-white/10">{t}</span>
                   ))}
                 </div>
-                <Button asChild size="lg" className="h-14 px-8 rounded-full bg-secondary text-secondary-foreground hover:bg-white hover:text-primary font-bold transition-colors shadow-md">
+                <Button asChild size="lg" className="h-14 px-8 rounded-full bg-secondary text-secondary-foreground hover:bg-white hover:text-primary font-bold transition-colors shadow-md w-full sm:w-auto">
                   <a href={waLink(WA_MSGS.contato)} target="_blank" rel="noopener noreferrer">
                     Agendar Horário
                   </a>
@@ -339,7 +347,7 @@ const Index = () => {
               </div>
               
               <div className="relative order-1 lg:order-2">
-                <div className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white/10 transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                <div className="aspect-[4/3] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-2xl border-4 sm:border-8 border-white/10 transform rotate-1 sm:rotate-2 hover:rotate-0 transition-transform duration-500">
                   <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=800&q=80" alt="Pet Shop Atendimento" loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
                 </div>
               </div>
@@ -404,9 +412,10 @@ const Index = () => {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Ver foto do pet no Instagram com ${item.likes} curtidas`}
                 className="group relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-pop transition-all duration-300 block bg-muted"
               >
-                <img src={item.img} alt={`Post do Instagram ${i + 1}`} loading="lazy" width={400} height={400} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img src={item.img} alt={`Post do Instagram do Pet Shop Tamandaré ${i + 1}`} loading="lazy" width={400} height={400} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center gap-2">
                   <Heart className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 fill-white" />
                   <span className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 delay-75">{item.likes}</span>
@@ -421,9 +430,9 @@ const Index = () => {
       </section>
 
       {/* Localização e Contato */}
-      <section id="contato" className="py-16 sm:py-24 bg-soft border-t border-border/50">
+      <section id="contato" className="py-12 sm:py-24 bg-soft border-t border-border/50">
         <div className="container grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="order-2 lg:order-1 rounded-[2.5rem] overflow-hidden shadow-card min-h-[400px] h-full border-8 border-background relative">
+          <div className="order-2 lg:order-1 rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-card min-h-[300px] sm:min-h-[400px] h-full border-4 sm:border-8 border-background relative">
             <iframe
               title="Mapa Pet Shop Tamandaré"
               src="https://www.google.com/maps?q=Rua+Guaratuba,+27,+Vila+Sobrinho,+Campo+Grande+-+MS&output=embed"
@@ -433,30 +442,30 @@ const Index = () => {
             />
           </div>
           
-          <div className="order-1 lg:order-2 bg-card rounded-[2.5rem] p-8 sm:p-12 shadow-card border border-border">
-            <Badge className="bg-primary/10 text-primary hover:bg-primary/20 mb-6 border-none px-4 py-1.5 uppercase tracking-wider text-xs font-bold">
+          <div className="order-1 lg:order-2 bg-card rounded-[1.5rem] sm:rounded-[2.5rem] p-6 sm:p-12 shadow-card border border-border">
+            <Badge className="bg-primary/10 text-primary hover:bg-primary/20 mb-6 border-none px-4 py-1.5 uppercase tracking-wider text-[10px] sm:text-xs font-bold">
               Como Chegar
             </Badge>
-            <h2 className="font-display text-3xl sm:text-4xl font-black mb-8 text-foreground">Estamos de portas <span className="text-primary">abertas</span> para você.</h2>
+            <h2 className="font-display text-2xl sm:text-4xl font-black mb-8 text-foreground">Estamos de portas <span className="text-primary">abertas</span> para você.</h2>
             
-            <div className="space-y-6 text-base mb-10">
-              <div className="flex gap-4 p-4 rounded-2xl bg-soft border border-border/50 hover:border-primary/30 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-primary/10 grid place-items-center shrink-0">
+            <div className="space-y-4 sm:space-y-6 text-base mb-10">
+              <div className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-soft border border-border/50 hover:border-primary/30 transition-colors">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 grid place-items-center shrink-0">
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-bold text-foreground mb-1">Endereço</div>
-                  <div className="text-muted-foreground font-medium text-sm leading-snug">{ADDRESS_STREET}<br/>{ADDRESS_CITY}</div>
+                  <div className="font-bold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">Endereço</div>
+                  <div className="text-muted-foreground font-medium text-[11px] sm:text-sm leading-snug">{ADDRESS_STREET}<br/>{ADDRESS_CITY}</div>
                 </div>
               </div>
               
-              <div className="flex gap-4 p-4 rounded-2xl bg-soft border border-border/50 hover:border-primary/30 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-primary/10 grid place-items-center shrink-0">
+              <div className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-soft border border-border/50 hover:border-primary/30 transition-colors">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 grid place-items-center shrink-0">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="font-bold text-foreground mb-1">Telefone Fixo / WhatsApp</div>
-                  <div className="flex flex-col text-muted-foreground font-medium text-sm mt-1">
+                  <div className="font-bold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">Telefone Fixo / WhatsApp</div>
+                  <div className="flex flex-col text-muted-foreground font-medium text-[11px] sm:text-sm mt-1">
                     <a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-primary transition-colors">WhatsApp: {WHATSAPP_DISPLAY}</a>
                     <span className="opacity-80">Fixo: {PHONE_FIXED}</span>
                   </div>
@@ -464,8 +473,8 @@ const Index = () => {
               </div>
             </div>
             
-            <Button asChild size="lg" className="w-full h-14 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-md font-bold text-lg">
-              <a href={waLink(WA_MSGS.contato)} target="_blank" rel="noopener noreferrer">
+            <Button asChild size="lg" className="w-full h-14 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-md font-bold text-base sm:text-lg">
+              <a href={waLink(WA_MSGS.contato)} target="_blank" rel="noopener noreferrer" aria-label="Enviar mensagem pelo WhatsApp">
                 <MessageCircle className="mr-2 w-5 h-5" /> Enviar Mensagem
               </a>
             </Button>
@@ -474,20 +483,20 @@ const Index = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="container py-16 sm:py-24">
-        <div className="bg-primary rounded-[3rem] p-10 sm:p-16 md:p-20 text-center relative overflow-hidden shadow-pop">
+      <section className="container py-12 sm:py-24">
+        <div className="bg-primary rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-16 md:p-20 text-center relative overflow-hidden shadow-pop">
           <PawPrint className="absolute top-10 left-10 w-24 h-24 text-white/5 -rotate-12" />
           <PawPrint className="absolute bottom-10 right-10 w-32 h-32 text-white/5 rotate-12" />
           <Sparkles className="absolute top-16 right-20 w-12 h-12 text-secondary/50 animate-pulse" />
           
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
               Alegria e cuidado <span className="text-secondary">em um só lugar.</span>
             </h2>
-            <p className="text-white/90 mb-10 text-lg sm:text-xl font-medium">
+            <p className="text-white/90 mb-10 text-base sm:text-xl font-medium">
               Não perca tempo! Agende o banho e tosa ou a consulta do seu amigão hoje mesmo com a nossa equipe.
             </p>
-            <Button asChild size="lg" className="h-16 px-10 rounded-full bg-secondary text-secondary-foreground hover:bg-white hover:text-primary font-bold text-lg shadow-xl transition-all hover:scale-105">
+            <Button asChild size="lg" className="h-16 px-8 sm:px-10 rounded-full bg-secondary text-secondary-foreground hover:bg-white hover:text-primary font-bold text-base sm:text-lg shadow-xl transition-all hover:scale-105 w-full sm:w-auto">
               <a href={waLink(WA_MSGS.ctaFinal)} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 w-6 h-6" /> Chamar no WhatsApp
               </a>
@@ -497,10 +506,10 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-background pt-20 pb-10">
+      <footer className="bg-foreground text-background pt-16 sm:pt-20 pb-10">
         <div className="container">
-          <div className="grid md:grid-cols-12 gap-12 lg:gap-8 mb-16">
-            <div className="md:col-span-5 lg:col-span-4">
+          <div className="grid md:grid-cols-12 gap-10 lg:gap-8 mb-12 sm:mb-16">
+            <div className="md:col-span-5 lg:col-span-4 text-center md:text-left flex flex-col items-center md:items-start">
               <a href="#inicio" className="flex items-center gap-3 mb-6 inline-flex">
                 <div className="w-12 h-12 rounded-xl bg-primary grid place-items-center">
                   <PawPrint className="w-6 h-6 text-white" />
