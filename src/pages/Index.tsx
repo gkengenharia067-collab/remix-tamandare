@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import whatsappLogo from "@/assets/whatsapp-logo.png";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 
 // External Images (Replacing old Cãotainer assets)
 const heroPets = "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80";
@@ -428,6 +429,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Testemunhos Section */}
+      <TestimonialsCarousel />
 
       {/* Localização e Contato */}
       <section id="contato" className="py-12 sm:py-24 bg-soft border-t border-border/50">
