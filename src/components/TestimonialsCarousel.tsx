@@ -6,24 +6,24 @@ import { Button } from "./ui/button";
 
 const testimonials = [
   {
-    text: "Atendimento de excelência e muito cuidado com os nossos pets. O serviço de banho e tosa é impecável, recomendo a todos na região da Vila Sobrinho.",
-    author: "@claudia_petlovers",
+    text: "Sou cliente há anos e não troco por nada. O atendimento veterinário é extremamente atencioso e o carinho com os animais é nítido em cada detalhe.",
+    author: "Ana Paula Santos",
   },
   {
-    text: "Sempre levo meu cachorro ao Pet Shop Tamandaré e ele volta super cheiroso e relaxado. A equipe é muito atenciosa e dedicada ao bem-estar animal.",
-    author: "@marcos_silva_cg",
+    text: "O serviço de banho e tosa é o melhor da região. Meu pet sempre volta impecável e, o mais importante, muito tranquilo. Recomendo com certeza!",
+    author: "Luiz Fernando Oliveira",
   },
   {
-    text: "O melhor lugar para cuidar do seu amigão. Produtos de alta qualidade e um carinho que faz toda a diferença no atendimento.",
-    author: "@ana_lucia_viana",
+    text: "Ambiente sempre muito limpo e organizado. A equipe é super profissional e os produtos na loja são de excelente qualidade. Nota dez para o Pet Shop Tamandaré.",
+    author: "Camila Ferreira",
   },
   {
-    text: "Profissionais qualificados que realmente amam o que fazem. Minha gatinha foi muito bem tratada na consulta veterinária. Nota dez!",
-    author: "@rodrigo_mendes_pet",
+    text: "Levo meus gatos para as consultas e sempre sou muito bem atendida. É um lugar de confiança onde sabemos que nossos pets estão em boas mãos.",
+    author: "Juliana Costa",
   },
   {
-    text: "Espaço higienizado, equipe preparada e um atendimento humano incrível. Sou cliente fiel e confio plenamente no cuidado deles.",
-    author: "@carol_lima_pets",
+    text: "A variedade de rações e acessórios é ótima, e a entrega em domicílio ajuda muito no dia a dia. Atendimento e dedicação nota mil!",
+    author: "Ricardo Almeida",
   }
 ];
 
