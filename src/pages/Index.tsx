@@ -89,7 +89,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen bg-background selection:bg-primary/20 selection:text-primary">
       {/* Top bar */}
       <div className="bg-primary text-primary-foreground text-[10px] sm:text-sm font-medium">
         <div className="container flex flex-wrap items-center justify-center sm:justify-between py-2 sm:py-2.5 gap-2 sm:gap-3">

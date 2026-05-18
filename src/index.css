@@ -76,7 +76,7 @@
 @layer base {
   * { @apply border-border; }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
   h1, h2, h3, .font-display {
